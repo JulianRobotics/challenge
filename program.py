@@ -1,6 +1,9 @@
 # Your code goes here
 
 import pyray as pr
+from tail_segment import TailSegment
+from player import Player
+from apple import Apple
 
 pr.init_window(500, 500, "Snake Game")
 
@@ -10,10 +13,10 @@ class Game:
     apple: Apple
 
     def __init__(self) -> None:
-        self.tail = # TODO: create a tail
-        self.player = # TODO: create a player object
-        self.apple = # TODO: create apple object
-
+        self.tail = TailSegment(50,50)# TODO: create a tail
+        self.player = Player(20,20)# TODO: create a player object
+        self.apple = Apple(20,40)# TODO: create apple object
+        
     def update(self) -> None:
         # all logic should go here
         if pr.is_key_down(pr.KeyboardKey.KEY_LEFT): # this is how you get user input,
@@ -23,11 +26,10 @@ class Game:
 
     def draw(self) -> None:
         # all drawing should go here
-        pr.draw_rectangle_v(self.player.position(), (10,10), pr.BLACK)
-        pr.draw_rectangle_v(self.apple.position(), (10,10), pr.RED)
-        for tailPiece in self.tail:
-            pr.draw_rectangle_v(tailPiece.position(), (10,10), pr.DARKGRAY) # please have a public method [position] in TailSegment
-
+        pr.draw_rectangle_v(self.player.position, (10,10), pr.BLACK)
+        pr.draw_rectangle_v(self.apple.position, (10,10), pr.RED)
+        #for tailPiece in self.tail:
+            #pr.draw_rectangle_v(tailPiece.position, (10,10), pr.DARKGRAY) # please have a public method [position] in TailSegment
 
 
 game = Game()

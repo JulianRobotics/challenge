@@ -26,7 +26,7 @@ class Game:
 
     def update(self) -> None:
         # all logic should go here
-        self.draw()
+        #self.draw()
         self.check_collisions()
         self.update_tail()
         self.player.move()
@@ -74,12 +74,12 @@ class Game:
 game = Game()
 
 while not pr.window_should_close():
+    pr.begin_drawing()
+    pr.clear_background(pr.WHITE)
+    game.draw()
+    pr.end_drawing()
     if not game.dead:
         game.update()
     else:
         game.game_over()
-
-    pr.begin_drawing()
-    pr.clear_background(pr.WHITE)
-    pr.end_drawing()
 pr.close_window()

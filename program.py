@@ -41,7 +41,8 @@ class Game:
         pr.draw_text(f"SCORE: {str(self.score)}",20,20,20,pr.DARKBROWN)
     
     def update_tail(self):
-        shift = TailSegment(self.tail[0].x + self.player.direction[0],self.tail[0].y + self.player.direction[1])
+        shift = TailSegment((self.tail[0].x + self.player.direction[0]) % 20,(self.tail[0].y + self.player.direction[1]) % 20)
+        print(self.tail[0].position)
         self.tail.insert(0,shift)
         if self.check_collisions() == "apple":
             self.apple.generate_random_position()
@@ -59,8 +60,6 @@ class Game:
                 self.apple.generate_random_position()
             if pr.check_collision_recs(self.player_rect,rect):
                 self.dead = True
-        if self.player.position[0]*TILE_SIZE >= 600 or self.player.position[0] < 0 or self.player.position[1]*TILE_SIZE >= 600 or self.player.position[1] < 0:
-            self.dead = True
 
     def game_over(self):
         self.apple.generate_random_position()

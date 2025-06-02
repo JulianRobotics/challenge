@@ -21,4 +21,4 @@ class Player():
         elif pr.is_key_down(pr.KeyboardKey.KEY_UP):
             if(self.direction != DOWN):
                 self.direction = UP
-        self.position = (self.position[0]+self.direction[0],self.position[1]+self.direction[1])
+        self.position = ((self.position[0]+self.direction[0])%20,(self.position[1]+self.direction[1])%20)
